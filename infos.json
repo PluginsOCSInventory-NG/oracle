@@ -1,0 +1,10 @@
+{
+  "displayName" : "oracle",
+  "author" : ["Gilles Dubois"],
+  "contributor" : [],
+  "supportedAgent" : ["Windows"],
+  "description" : {
+    "fr" : "Inventaire des home oracle",
+    "en" : "Oracle home inventory"
+  }
+}
