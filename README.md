@@ -1,0 +1,1 @@
+Plugin Oracle DB Inventory
