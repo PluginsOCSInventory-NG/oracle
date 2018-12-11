@@ -3,6 +3,8 @@
   "author" : ["Gilles Dubois"],
   "contributor" : [],
   "supportedAgent" : ["Windows"],
+  "version" : "1.0",
+  "licence" : "GPLv2",
   "description" : {
     "fr" : "Inventaire des home oracle",
     "en" : "Oracle home inventory"
