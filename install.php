@@ -21,45 +21,39 @@
  * MA 02110-1301, USA.
  */
 
-function plugin_version_oracle()
+
+/**
+ * This function is called on installation and is used to create database schema for the plugin
+ */
+function extension_install_oracle()
 {
-    return array(
-        'name' => 'Oracle inventory',
-        'version' => '1.0',
-        'author'=> 'Gilles Dubois',
-        'license' => 'GPLv2',
-        'verMinOcs' => '2.3'
-    );
+    $commonObject = new ExtensionCommon;
+
+    $commonObject -> sqlQuery("CREATE TABLE IF NOT EXISTS `ORACLE` (
+                              `ID` INT(11) NOT NULL AUTO_INCREMENT,
+                              `HARDWARE_ID` INT(11) NOT NULL,
+                              `PUBLISHER` VARCHAR(255) DEFAULT NULL,
+                              `HOMENAME` VARCHAR(255) DEFAULT NULL,
+                              `VERSION` VARCHAR(255) DEFAULT NULL,
+                              `EDITION` VARCHAR(255) DEFAULT NULL,
+                              `INSTANCENAME` VARCHAR(255) DEFAULT NULL,
+                              PRIMARY KEY  (`ID`,`HARDWARE_ID`)
+                              ) ENGINE=INNODB;");
 }
 
-function plugin_init_oracle()
+/**
+ * This function is called on removal and is used to destroy database schema for the plugin
+ */
+function extension_delete_oracle()
 {
-
-    $object = new plugins;
-    $object->add_cd_entry("oracle", "other");
-
-    // Plugin Oracle
-    $object -> sql_query(
-        "CREATE TABLE IF NOT EXISTS `ORACLE` (
-        `ID` INT(11) NOT NULL AUTO_INCREMENT,
-        `HARDWARE_ID` INT(11) NOT NULL,
-        `PUBLISHER` VARCHAR(255) DEFAULT NULL,
-        `HOMENAME` VARCHAR(255) DEFAULT NULL,
-        `VERSION` VARCHAR(255) DEFAULT NULL,
-        `EDITION` VARCHAR(255) DEFAULT NULL,
-        `INSTANCENAME` VARCHAR(255) DEFAULT NULL,
-        PRIMARY KEY  (`ID`,`HARDWARE_ID`)
-        ) ENGINE=INNODB;"
-    );
-
+    $commonObject = new ExtensionCommon;
+    $commonObject -> sqlQuery("DROP TABLE `ORACLE`;");
 }
 
-function plugin_delete_oracle()
+/**
+ * This function is called on plugin upgrade
+ */
+function extension_upgrade_oracle()
 {
-
-    $object = new plugins;
-    $object -> del_cd_entry("oracle");
-    // Plugin Oracle
-    $object -> sql_query("DROP TABLE `ORACLE`;");
 
 }
