@@ -33,7 +33,7 @@ print_item_header("Oracle");
 if (!isset($protectedPost['SHOW'])) {
     $protectedPost['SHOW'] = 'NOSHOW';
 }
-$form_name="oracle";
+$form_name="ORACLE";
 $table_name=$form_name;
 $tab_options=$protectedPost;
 $tab_options['form_name']=$form_name;
